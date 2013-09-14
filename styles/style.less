@@ -1,0 +1,235 @@
+@header_height: 100px; // 44px min
+@header_bg: #f4f4f4;
+@content_width: 1000px; // 100% / 1000px
+@header_btn_bg: #006fca;
+@header_btn_height: 25px;
+@event_bg: #c1e4ff;
+@event_hover_bg: #e5f1f9;
+
+@import "popovers.less";
+
+body {
+	font-size: 12px;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+a {
+	text-decoration: inherit;
+	color: inherit;
+}
+
+input[type="text"], textarea {
+	font-size: 12px;
+	border: solid 1px rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4) inset;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.content, .cal_main .navigation {
+	margin: 0 auto;
+	width: @content_width;
+}
+
+.close, .input_reset {
+	display: inline-block;
+	text-align: center;
+	position: absolute;
+	cursor: pointer;
+	background: none;
+	border: none;
+	transition-duration: 0.5s;
+	&:hover {
+		color: rgba(96, 0, 0, 0.8);
+	}
+}
+.close {
+	@close_size: 16px;
+	width: @close_size;
+	height: @close_size;
+	line-height: @close_size;
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.6);
+	margin-left: -@close_size;
+}
+.input_reset {
+	@clear_size: 25px;
+	width: @clear_size;
+	height: @clear_size;
+	line-height: @clear_size;
+	display: none;
+	font-size: 18px;
+	color: rgba(0, 0, 0, 0.4);
+}
+
+.cal_header, .cal_main, form, .button, input, textarea, .close {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.cal_header, .cal_main {
+	padding: 0 50px;
+}
+
+.cal_header {
+	height: @header_height;
+	background-color: @header_bg;
+	border-bottom: 1px solid darken(@header_bg, 15%);
+	box-shadow: 0 0 3px darken(@header_bg, 30%);
+	padding-top: @header_height - 44;
+	.content {
+		.button {
+			display: inline-block;
+			height: @header_btn_height;
+			padding: 6px 8px 0 8px;
+			background-color: @header_btn_bg;
+			color: #fff;
+			font-weight: bold;
+			text-decoration: none;
+			text-align: center;
+			text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+			border-radius: 2px;
+			float: left;
+			margin-right: 10px;
+			box-shadow: 0 1px 2px darken(@header_bg, 50%);
+			transition-duration: 0.3s;
+			&:hover {
+				background-color: darken(@header_btn_bg, 7%);
+			}
+			&.clicked {
+				box-shadow: none;
+				background-color: darken(@header_btn_bg, 7%);
+				box-shadow: 0 1px 2px rgba(0, 0, 0, .8) inset;
+				color: rgba(255, 255, 255, 0.8)
+			}
+		}
+		.searchform {
+			// Del*1
+			// background-color: rgba(0, 64, 128, 0.2);
+			float: right;
+			.input_text_group {float: right;}
+			input {
+				height: @header_btn_height;
+				float: right;
+				&[type="text"] {
+					width: 200px;
+					padding-right: 25px;
+				}
+				&[type="submit"] {
+					height: 25px;
+					border: none;
+					background: url("icon-search.png") center center no-repeat;
+					margin-right: 8px;
+					cursor: pointer;
+				}
+			}
+			.input_reset {
+				margin-left: 175px;
+			}
+		}
+	}
+}
+
+.cal_main {
+	margin-top: 15px;
+	.navigation {
+		.button, #month_name {
+			margin-right: 6px;
+		}
+		.button {
+			vertical-align: middle;
+			color: rgba(0, 0, 0, 0.6);
+			display: inline-block;
+			height: 17px;
+			border: solid 1px rgba(0, 0, 0, 0.2);
+			border-radius: 3px;
+			background: center center no-repeat;
+			box-shadow: 0 0 1px rgba(0, 0, 0, 0.4) inset;
+			font-size: 12px;
+			transition-duration: 0.3s;
+			&:hover {
+				background-color: rgba(0, 0, 0, 0.03);
+			}
+			&#month_prev {
+				width: 17px;
+				background-image: url("btn-back.png");
+			}
+			&#month_next {
+				width: 17px;
+				background-image: url("btn-forward.png");
+			}
+			&#show_today {
+				padding: 0 5px;
+				vertical-align: top;
+				line-height: 15px;
+			}
+		}
+		#month_name {
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 16px;
+			text-align: center;
+			width: 116px;
+		}
+	}
+	.content {margin-top: 12px;}
+}
+
+#calendar {
+	@calendar_border_color: rgba(0, 0, 0, 0.08);
+	color: rgba(0, 0, 0, 0.4);
+	font-size: 11px;
+	width: 100%;
+	border-collapse: separate;
+	border-radius: 2px;
+	border: 1px solid @calendar_border_color;
+	table-layout: fixed;
+	td {
+		border-left: 1px solid @calendar_border_color;
+		border-top: 1px solid @calendar_border_color;
+	}
+	tr:first-child td {border-top: none;}
+	tr td:first-child {border-left: none;}
+	.day {
+		cursor: pointer;
+		width: 100%;
+		height: 100px; // Chrome
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 10px 8px;
+		overflow: hidden;
+		transition-property: background-color, box-shadow, color, border-color;
+		transition-duration: 0.3s;
+		&:hover {
+			background-color: @event_hover_bg;
+			box-shadow: 0 0 0 1px darken(@event_hover_bg, 20%); // В Opera 12 не всегда сбрасывается обратно
+		}
+		&.today {
+			background-color: rgba(0, 0, 0, 0.045);
+			color: rgba(0, 0, 0, 0.58);
+			font-weight: bold;
+			&:hover {
+				background-color: darken(@event_hover_bg, 3%);
+			}
+		}
+		&.event {
+			color: rgba(0, 0, 0, 0.58);
+			background-color: @event_bg;
+			.name {font-weight: bold;}
+			&:hover {
+				background-color: darken(@event_bg, 4%);
+			}
+		}
+		&.marked {
+			box-shadow: 0 0 0 1px darken(@event_hover_bg, 20%), inset 0 0 0 1px darken(@event_hover_bg, 20%);
+			background-color: @event_hover_bg;
+		}
+		&>span {
+			display: block;
+			margin-bottom: 10px;
+		}
+	}
+}

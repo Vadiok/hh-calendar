@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<title>Календарь</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="styles/cssreset.css">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<!-- <link rel="stylesheet/less" type="text/css" href="styles/style.less"> -->
+	<!-- LESS JS including -->
+	<!-- <script src="javascripts/less.js" type="text/javascript" charset="utf-8"></script> -->
+	<!-- jQuery including -->
+	<script src="javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<!-- Calendar JS including -->
+	<script src="javascripts/calendar.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+<!-- Calendar Header -->
+<header id="header" class="cal_header">
+	<div class="content">
+		<a href="#" id="addevent" class="button">Добавить</a>
+		<a href="#" id="refresh" class="button">Обновить</a>
+		<form class="searchform">
+			<div class="input_text_group">
+				<input id="search_query_input" type="text" placeholder="Событие, дата или участник">
+				<button class="input_reset" type="reset">&times;</button>
+			</div>
+			<input type="submit" value="">
+		</form>
+		<!-- Search Event Popover -->
+		<div class="popover popover_bottom search_popover">
+			<div class="arrow"></div>
+			<div class="popover_content">
+				<div class="event">
+					<span class="name">День народного единства</span>
+					<span class="date">4 ноября</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День знаний</span>
+					<span class="date">1 сентября</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День независимости</span>
+					<span class="date">12 июня</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День победы</span>
+					<span class="date">9 мая</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День труда</span>
+					<span class="date">1 мая</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День космонавтики</span>
+					<span class="date">12 апреля</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">Международный женский день, праздник весны</span>
+					<span class="date">8 марта</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">День защитника отечества</span>
+					<span class="date">23 февраля</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">Рождество</span>
+					<span class="date">7 января</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">Новый год</span>
+					<span class="date">1 января</span>
+				</div>
+				<hr>
+				<div class="event">
+					<span class="name">Не найдено</span>
+					<span class="date">Таких событий не обнаружено</span>
+				</div>
+			</div>
+		</div>
+		<!-- / Search Event Popover -->
+	</div>
+</header>
+<!-- / Calendar Header -->
+
+<!-- Calendar Main Content -->
+<main class="cal_main">
+
+	<!-- Calendar Navigation -->
+	<nav class="navigation" role="navigation">
+		<a href="#" id="month_prev" class="button">&nbsp;</a>
+		<span id="month_name"></span>
+		<a href="#" id="month_next" class="button">&nbsp;</a>
+		<a href="#" id="show_today" class="button">Сегодня</a>
+	</nav>
+	<!-- / Calendar Navigation -->
+
+	<!-- Calendar Table -->
+	<div class="content">
+		<table id="calendar">
+		</table>
+	</div>
+	<!-- / Calendar Table -->
+
+</main>
+<!-- / Calendar Main Content -->
+
+
+<!-- Popovers -->
+
+<!-- Add New Event Popover -->
+<div class="popover popover_bottom addnew_popover">
+	<div class="arrow"></div>
+	<div class="popover_content">
+		<form class="addnew">
+			<input type="text" placeholder="5 марта, День Рождения">
+			<input type="submit" value="Создать">
+		</form>
+	</div>
+	<div class="close">&times;</div>
+</div>
+<!-- / Add New Event Popover -->
+
+<!-- Add Day Event Popover -->
+<div class="popover popover_right dayevent_popover">
+	<div class="arrow"></div>
+	<div class="popover_content">
+		<form class="dayevent">
+			<div class="inputs">
+				<div class="change">
+					<div class="changeblock">
+						<h2 class="changed_data">Наименование события</h2>
+					</div>
+					<input name="event_name" type="text" placeholder="Событие">
+				</div>
+				<div class="change">
+					<div class="changeblock">
+						<span class="date changed_data">6 марта 2013 года</span>
+					</div>
+					<input name="event_date" type="text" placeholder="День, месяц, год">
+				</div>
+				<div class="change">
+					<div class="changeblock">
+						<h3>Участники:</h3>
+						<span class="members changed_data">Петр Иванов, Сидор Петров, Иван Сидоров</span>
+					</div>
+					<input name="event_members" type="text" placeholder="Имена участников">
+				</div>
+			</div>
+			<textarea name="event_description" placeholder="Описание"></textarea>
+			<input name="event_year" type="hidden">
+			<input type="submit" value="Создать">
+		</form>
+	</div>
+	<div class="close">&times;</div>
+</div>
+<!-- / Add Day Event Popover -->
+
+
+</body>
+</html>
